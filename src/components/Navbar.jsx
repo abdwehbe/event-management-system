@@ -1,8 +1,14 @@
-function Navbar({ setCurrentPage, currentPage }) {
+import { Link, useLocation } from 'react-router-dom'
+
+function Navbar() {
+  const location = useLocation()
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        <span className="navbar-brand">EventManager</span>
+        <Link className="navbar-brand" to="/">
+          EventManager
+        </Link>
         <button 
           className="navbar-toggler" 
           type="button" 
@@ -14,44 +20,44 @@ function Navbar({ setCurrentPage, currentPage }) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button 
-                className={`nav-link btn btn-link ${currentPage === 'home' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('home')}
+              <Link 
+                className={`nav-link ${location.pathname === '/' || location.pathname === '/home' ? 'active' : ''}`}
+                to="/"
               >
                 Home
-              </button>
+              </Link>
             </li>
             <li className="nav-item">
-              <button 
-                className={`nav-link btn btn-link ${currentPage === 'about' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('about')}
+              <Link 
+                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                to="/about"
               >
                 About
-              </button>
+              </Link>
             </li>
             <li className="nav-item">
-              <button 
-                className={`nav-link btn btn-link ${currentPage === 'services' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('services')}
+              <Link 
+                className={`nav-link ${location.pathname === '/services' ? 'active' : ''}`}
+                to="/services"
               >
                 Services
-              </button>
+              </Link>
             </li>
             <li className="nav-item">
-              <button 
-                className={`nav-link btn btn-link ${currentPage === 'events' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('events')}
+              <Link 
+                className={`nav-link ${location.pathname === '/events' ? 'active' : ''}`}
+                to="/events"
               >
                 Events
-              </button>
+              </Link>
             </li>
             <li className="nav-item">
-              <button 
-                className={`nav-link btn btn-link ${currentPage === 'contact' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('contact')}
+              <Link 
+                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+                to="/contact"
               >
                 Contact
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

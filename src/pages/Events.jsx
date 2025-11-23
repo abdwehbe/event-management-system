@@ -41,7 +41,6 @@ function Events({ events, setEvents }) {
       return event
     })
     setEvents(updatedEvents)
-    alert('Successfully registered for the event!')
   }
 
   return (
