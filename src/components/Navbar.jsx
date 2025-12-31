@@ -1,8 +1,11 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from '../contexts/AuthContext'
 
 function Navbar() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { isAuthenticated, user, logout } = useAuth()
   const [isNavCollapsed, setIsNavCollapsed] = useState(true)
 
   const handleNavCollapse = () => {
@@ -13,6 +16,12 @@ function Navbar() {
     if (!isNavCollapsed) {
       setIsNavCollapsed(true)
     }
+  }
+
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+    handleLinkClick()
   }
 
   return (
@@ -81,6 +90,48 @@ function Navbar() {
                 Contact
               </Link>
             </li>
+          </ul>
+          <ul className="navbar-nav ms-auto">
+            {isAuthenticated ? (
+              <>
+                {user && (
+                  <li className="nav-item">
+                    <span className="navbar-text me-3">
+                      Welcome, {user.name || user.email}
+                    </span>
+                  </li>
+                )}
+                <li className="nav-item">
+                  <button
+                    className="btn btn-outline-light"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
+                    to="/login"
+                    onClick={handleLinkClick}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === '/register' ? 'active' : ''}`}
+                    to="/register"
+                    onClick={handleLinkClick}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
