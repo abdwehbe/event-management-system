@@ -5,7 +5,7 @@
 1. `npm run build`
 2. `npm start`
 
-Note the frontend will be serving the static files of the front end on the same domain.
+Note the backend will be serving the static files of the front end on the same domain.
 
 ## Frontend readme file
 
