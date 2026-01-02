@@ -32,7 +32,7 @@ function Events() {
     try {
       setLoading(true);
       setError('');
-      const data = await eventsAPI.getAll();
+      const data = await eventsAPI.getMyEvents();
       setEvents(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message || 'Failed to fetch events');
@@ -125,7 +125,7 @@ function Events() {
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1>Events</h1>
+        <h1>My Events</h1>
         <button
           className="btn btn-primary"
           onClick={() => {

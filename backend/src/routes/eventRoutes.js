@@ -7,14 +7,14 @@ const {
   getEventById,
   updateEvent,
   deleteEvent,
+  getAllEvents,
 } = require("../controllers/eventController");
 
-router.use(authenticate);
-
-router.post("/", createEvent);
-router.get("/", getEvents);
-router.get("/:id", getEventById);
-router.put("/:id", updateEvent);
-router.delete("/:id", deleteEvent);
+router.post("/", authenticate, createEvent);
+router.get("/", authenticate, getEvents);
+router.get("/all", getAllEvents);
+router.get("/:id", authenticate, getEventById);
+router.put("/:id", authenticate, updateEvent);
+router.delete("/:id", authenticate, deleteEvent);
 
 module.exports = router;

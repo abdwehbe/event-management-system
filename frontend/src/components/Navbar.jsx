@@ -72,13 +72,22 @@ function Navbar() {
                 Services
               </Link>
             </li>
+              <li className="nav-item">
+              <Link 
+                className={`nav-link ${location.pathname === '/all-events' ? 'active' : ''}`}
+                to="/all-events"
+                onClick={handleLinkClick}
+              >
+                All Events
+              </Link>
+            </li>
             <li className="nav-item">
               <Link 
                 className={`nav-link ${location.pathname === '/events' ? 'active' : ''}`}
                 to="/events"
                 onClick={handleLinkClick}
               >
-                Events
+                My Events
               </Link>
             </li>
             <li className="nav-item">

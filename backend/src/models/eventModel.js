@@ -28,6 +28,24 @@ class Event {
     return rows;
   }
 
+  static async findAll() {
+    const [rows] = await pool.execute(
+      `SELECT 
+        e.id,
+        e.user_id, 
+        e.title, 
+        e.description,
+        e.event_date,
+        e.event_time,
+        e.location,
+        e.created_at,
+        e.updated_at,
+        u.name as username
+       FROM events e join users u on u.id = e.user_id ORDER BY event_date, event_time`
+    );
+    return rows;
+  }
+
   static async findById(id, userId) {
     const [rows] = await pool.execute(
       "SELECT * FROM events WHERE id = ? AND user_id = ?",

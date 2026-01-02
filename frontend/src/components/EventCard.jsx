@@ -10,6 +10,7 @@ function EventCard({ event, onEdit, onDelete }) {
           <p><strong>Date:</strong> {new Date(event.event_date).toLocaleDateString()}</p>
           <p><strong>Time:</strong> {event.event_time}</p>
           <p><strong>Location:</strong> {event.location}</p>
+          {event.username ? <p><strong>Event by:</strong> {event.username}</p> : null}
           <div className="d-flex gap-2 mt-3">
             {onEdit && (
               <button

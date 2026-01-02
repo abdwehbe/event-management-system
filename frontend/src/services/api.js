@@ -65,8 +65,12 @@ export const authAPI = {
 };
 
 export const eventsAPI = {
-  getAll: async () => {
+  getMyEvents: async () => {
     return apiRequest("/api/events/");
+  },
+
+  getAll: async () => {
+    return apiRequest("/api/events/all");
   },
 
   getById: async (id) => {
